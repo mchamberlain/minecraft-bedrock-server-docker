@@ -1,0 +1,16 @@
+#! /usr/bin/bash
+
+# for each config file, if it does not exist in /config, copy from the defaults
+for filename in "allowlist.json" "permissions.json" "server.properties"; do
+    # Copy config files to default path
+    if [ -e "/config/$filename" ]; then
+        continue
+    fi
+    cp ".defaults/config/$filename" "/config/$filename"
+done
+
+if [ "$MINECRAFT_ARCH" == "arm64" ]; then
+    box64 bedrock_server "$@"
+else
+    ./bedrock_server "$@"
+fi

@@ -1,0 +1,8 @@
+services:
+  minecraft-bedrock-server:
+    image: minecraft-bedrock-server:latest
+    volumes:
+      - ./data/config:/config
+      - ./data/worlds:/worlds
+    ports:
+      - 32137:19132/udp
