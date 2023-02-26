@@ -1,8 +1,9 @@
 services:
   minecraft-bedrock-server:
     image: minecraft-bedrock-server:latest
+    restart: unless-stopped
     volumes:
       - ./data/config:/config
       - ./data/worlds:/worlds
     ports:
-      - 32137:19132/udp
+      - 28637:19132/udp
